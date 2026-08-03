@@ -1,8 +1,11 @@
-class Solution(object):
-    def removeElement(self, nums, val):
-        k = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
-        return k
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        l = 0
+        s = str(x)
+        r = len(s) - 1
+        while l <= r:
+            if s[l] != s[r]:
+                return False
+            l += 1
+            r -= 1
+        return True
