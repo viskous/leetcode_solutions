@@ -1,11 +1,17 @@
 class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        l = 0
-        s = str(x)
-        r = len(s) - 1
-        while l <= r:
-            if s[l] != s[r]:
-                return False
-            l += 1
-            r -= 1
-        return True
+    def maxArea(self, height: List[int]) -> int:
+        l, r = 0, len(height)-1
+        maxnum = 0
+        while l<r:
+            hl, hr = height[l], height[r]
+            if hl > hr:
+                cur = hr*(r-l)
+                maxnum = max(cur, maxnum)
+                while l<r and height[r]<=hr:
+                    r-=1
+            else:
+                cur = hl*(r-l)
+                maxnum = max(cur, maxnum)
+                while l<r and height[l]<=hl:
+                    l+=1
+        return maxnum
