@@ -3,12 +3,8 @@ class Solution:
         l = 0
         n = len(s)
         m = len(t)
-        if n == 0 :
-            return True
-        elif m == 0: return False
+        if n == 0 : return True
         for r in range(m):
-            if s[l] == t[r]:
-                l += 1
-            if l == n:
-                return True
+            if s[l] == t[r]: l += 1
+            if l == n: return True
         return False
