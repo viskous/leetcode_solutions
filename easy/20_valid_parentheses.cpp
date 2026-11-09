@@ -1,27 +1,20 @@
-class Solution:
-    def isValid(self, s: str) -> bool:
-        stack = []
-        top  = None
-        brackets = {")": "(", "}": "{","]" : "[" }
-
-        for brac in s:
-            if brac in brackets:
-                if top == brackets[brac]:
-                    stack.pop()
-                else:
-                    return False
-                if len(stack) > 0:
-                    top  = stack[-1]
-                else:
-                    top = None
-                    
-            else:
-                stack.append(brac)
-                if len(stack) > 0:
-                    top  = stack[-1]
-                else:
-                    top = None
-            
-        return len(stack) == 0
-            
-        
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<int> st;
+        unordered_map<char, char> hash_map = {
+        {')','('},
+        {']','['},
+        {'}','{'}};
+        for (char ch : s){
+            if (hash_map.count(ch)){
+                if (st.empty() || st.top() != hash_map[ch]) return false;
+                st.pop();
+            }
+            else{
+                st.push(ch);
+            }
+        }
+        return st.empty();
+    }
+};
